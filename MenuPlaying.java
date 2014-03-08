@@ -3,31 +3,36 @@ package chkrs;
 
 import java.util.Scanner;
 
-public class MenuHelp {
+/**
+ *
+ * @author Michael
+ */
+public class MenuPlaying {
+    Master master = new Master();
     Scanner input = new Scanner(System.in);
-    
-    String instructions = "What can we help you with?";
+    String instructions = "Please select from the following options.";
     String selection= "Default";
     int menuItems = 4;
     boolean valid = false;
     private final static String[][] menus = {
-        {"I", "Game play instructions"}, 
-        {"N", "Menu Navigation"},
-	{"G", "General"},
-	{"R", "Return to previous menu"},
+        {"S", "Start Game"}, 
+	{"E", "Exit this game"},
+	{"R", "Return to new game menu"}, 
+	{"H", "Help"},
 	};
     
-    private MenuHelpControl helpMenuControl = new MenuHelpControl();
-    private Chkrs returnTo = new Chkrs();
-    public MenuHelp(){
-	
+   
+    MenuPlayingHelp menuPlayingHelp = new MenuPlayingHelp();
+    
+    public MenuPlaying(){
+
     }
    
     public void displayMenu(){
 	System.out.println(this.instructions+"\n");
-	
+
 	for(int i = 0; i < this.menuItems; i++){
-	    System.out.println(this.menus[i][0]+ "   " +this.menus[i][1]);
+	    System.out.println(MenuPlaying.menus[i][0]+ "   " +MenuPlaying.menus[i][1]);
 	}
     }
     public void getInput(){
@@ -35,26 +40,25 @@ public class MenuHelp {
 	displayMenu();
 	System.out.println("\nPlease make your selection now.");
 	valid = getCommand(selection);
-	
+
 	if(valid){
 	    switch(selection){
-		case "I": this.helpMenuControl.instructions();
+		case "S": master.masterRun();
 		    break;
-		case "N": this.helpMenuControl.navigation();
+		case "E": 
 		    break;
-		case "G": this.helpMenuControl.general();
+		case "R":
 		    break;
-		case "R": this.returnTo.displayMenu();
+		case "H": this.menuPlayingHelp.getInput();
 		    break;
+                
 		}
 	}
 	}while (valid != true);
     }
     
     public boolean getCommand(String string){
-	
-	
-	boolean valid = false;
+
 	do{
 	    selection = input.next().trim().toUpperCase();
 	    valid = validateCommand(selection);
@@ -66,12 +70,13 @@ public class MenuHelp {
     }
     
     private boolean validateCommand(String command){
-	
-	for(String[] row : MenuHelp.menus){
+
+	for(String[] row : MenuPlaying.menus){
 	    if(row[0].equals(selection)){
 		return true;
 	    }
 	}
 	return false;
     }
+    
 }

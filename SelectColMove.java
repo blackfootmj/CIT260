@@ -7,21 +7,22 @@
 package chkrs;
 
 import java.util.Scanner;
+
 /**
  *
- * @author bensmac
+ * @author michael
  */
-public class SelectCol {
+public class SelectColMove {
     Scanner input = new Scanner(System.in);
-    String instructions = "Please Select the column of the piece you would like to move";
+    String instructions = "Please Select the column of where you want to move the piece";
     boolean valid = false;
     private final static String[] validInputs = {"A","B","C","D","E","F","G","H","a","b","c","d","e","f","g","h"};
     String selection;
-    int converted;
-    public SelectCol(){
+    public int converted;
+    public SelectColMove(){
 	
     }
-    public void getInput(){
+    public int getInput(){
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
@@ -30,6 +31,7 @@ public class SelectCol {
 		converted = convertAlpha(selection);
 	    }
 	}
+	return converted;
     }
     private boolean validateCommand(String selection){
 	for(int i = 0;i < 16;i++){
@@ -80,5 +82,4 @@ public class SelectCol {
 	
 	return converted;
     }
-    
 }

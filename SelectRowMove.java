@@ -7,21 +7,22 @@
 package chkrs;
 
 import java.util.Scanner;
+
 /**
  *
- * @author bensmac
+ * @author michael
  */
-public class SelectRow {
+public class SelectRowMove {
     Scanner input = new Scanner(System.in);
-    String instructions = "Please Select the row of the piece you would like to move";
+    String instructions = "Please Select the row where you want to move the piece.";
     boolean valid = false;
     private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
     String selection;
-    int converted;
-    public SelectRow(){
+    public int converted;
+    public SelectRowMove(){
 	
     }
-    public void getInput(){
+    public int getInput(){
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
@@ -30,6 +31,7 @@ public class SelectRow {
 		converted = Integer.parseInt(selection);
 	    }
 	}
+	return converted;
     }
     private boolean validateCommand(String selection){
 	for(int i = 0;i < 8;i++){

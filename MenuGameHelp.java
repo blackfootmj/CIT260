@@ -1,38 +1,34 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-/**
- *
- * @author michael
- */
-
-package chkrs ;
+package chkrs;
 
 import java.util.Scanner;
 
-public class MainMenu {
-    
+/**
+ *
+ * @author bensmac
+ */
+public class MenuGameHelp {
     Scanner input = new Scanner(System.in);
     
-    String instructions = "Welcome to Checkers! Plese select an option below to begin.";
+    String instructions = "What can we help you with?";
     String selection= "Default";
-    int menuItems = 6;
+    int menuItems = 4;
     boolean valid = false;
     private final static String[][] menus = {
         {"I", "Game play instructions"}, 
         {"N", "Menu Navigation"},
 	{"G", "General"},
 	{"R", "Return to previous menu"},
-        {"1", "1 Player game"},
-	{"2", "2 Player game"},
-
 	};
     
-    private MainMenuControl mainMenuControl = new MainMenuControl();
-    private Checkers returnTo = new Checkers();
-    public MainMenu(){
+    MenuGameHelpControl menuGameHelpControl = new MenuGameHelpControl();
+    
+    public MenuGameHelp(){
 	
     }
    
@@ -40,7 +36,7 @@ public class MainMenu {
 	System.out.println(this.instructions+"\n");
 	
 	for(int i = 0; i < this.menuItems; i++){
-	    System.out.println(MainMenu.menus[i][0]+ "   " +MainMenu.menus[i][1]);
+	    System.out.println(MenuGameHelp.menus[i][0]+ "   " +MenuGameHelp.menus[i][1]);
 	}
     }
     public void getInput(){
@@ -51,17 +47,13 @@ public class MainMenu {
 	
 	if(valid){
 	    switch(selection){
-		case "I": this.mainMenuControl.instructions();
+		case "I": this.menuGameHelpControl.instructions();
 		    break;
-		case "N": this.mainMenuControl.navigation();
+		case "N": this.menuGameHelpControl.navigation();
 		    break;
-		case "G": this.mainMenuControl.general();
+		case "G": this.menuGameHelpControl.general();
 		    break;
-		case "R": this.returnTo.displayMenu();
-		    break;
-                case "1": this.mainMenuControl.navigation();
-		    break;
-                case "2": this.mainMenuControl.navigation();
+		case "R": 
 		    break;
 		}
 	}
@@ -70,8 +62,6 @@ public class MainMenu {
     
     public boolean getCommand(String string){
 	
-	
-	boolean valid = false;
 	do{
 	    selection = input.next().trim().toUpperCase();
 	    valid = validateCommand(selection);
@@ -84,7 +74,7 @@ public class MainMenu {
     
     private boolean validateCommand(String command){
 	
-	for(String[] row : MainMenu.menus){
+	for(String[] row : MenuGameHelp.menus){
 	    if(row[0].equals(selection)){
 		return true;
 	    }
