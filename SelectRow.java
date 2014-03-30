@@ -4,43 +4,59 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package select;
 
+import Exception.SelectException;
+import chkrs.Error;
 import java.util.Scanner;
 /**
  *
  * @author michael
  */
 public class SelectRow {
-    Scanner input = new Scanner(System.in);
-	    String instructions = "Please Select the row of the piece you would like to move";
-	    boolean valid = false;
-	    private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
-	    String selection;
-	    public int converted;
+    private static Scanner input = new Scanner(System.in);
+    private static String instructions = "Please Select the row of the piece you would like to move";
+    private static boolean valid = false;
+    private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
+    private static String selection;
+    private static int converted;
+    
     public SelectRow(){
 	
-   	}
-    	public int getInput(){
-			while(!valid){
-			System.out.println(instructions);
-			selection = input.next();
-			valid = validateCommand(selection);
-			  	if(valid){
-				converted = Integer.parseInt(selection);
-			   		}
-				}
-			return converted;
-		    		}
+    }
+    
+    public int getStuff() throws SelectException{
+	while(!valid){
+	System.out.println(instructions);
+	selection = input.next();
+	try{
+		valid = validateCommand(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+	
+	    if(valid){
+		try{
+		converted = Integer.parseInt(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+		
+	    }
+	}
+	return converted;
+    }
     private boolean validateCommand(String selection){
 	for(int i = 0;i < 8;i++){
 	    if(validInputs[i].equals(selection)){
 		valid = true;
-			    }
-			}
-			if(!valid){
-			    new Error().displayError("Invalid command. Please enter a valid command");
-			}
-			return valid;
-		    }
-		}
+	    }
+	}
+	if(!valid){
+	    new Error().displayError("Invalid command. Please enter a valid command");
+	}
+	return valid;
+    }
+}

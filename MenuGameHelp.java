@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author bensmac
+ * @author michael
  */
 public class MenuGameHelp {
     Scanner input = new Scanner(System.in);

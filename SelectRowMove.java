@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package select;
 
+import Exception.SelectException;
+import chkrs.Error;
 import java.util.Scanner;
 
 /**
@@ -13,22 +15,78 @@ import java.util.Scanner;
  * @author michael
  */
 public class SelectRowMove {
-    Scanner input = new Scanner(System.in);
-    String instructions = "Please Select the row where you want to move the piece.";
-    boolean valid = false;
+    private static Scanner input = new Scanner(System.in);
+    private static String instructions = "Please Select the row where you want to move the piece.";
+    private static  boolean valid = false;
     private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
-    String selection;
-    public int converted;
+    private static String selection;
+    private static int converted;
+    
     public SelectRowMove(){
 	
     }
-    public int getInput(){
+
+    public static Scanner getInput() {
+	return input;
+    }
+
+    public static void setInput(Scanner input) {
+	SelectRowMove.input = input;
+    }
+
+    public static String getInstructions() {
+	return instructions;
+    }
+
+    public static void setInstructions(String instructions) {
+	SelectRowMove.instructions = instructions;
+    }
+
+    public static boolean isValid() {
+	return valid;
+    }
+
+    public static void setValid(boolean valid) {
+	SelectRowMove.valid = valid;
+    }
+
+    public static String getSelection() {
+	return selection;
+    }
+
+    public static void setSelection(String selection) {
+	SelectRowMove.selection = selection;
+    }
+
+    public static int getConverted() {
+	return converted;
+    }
+
+    public static void setConverted(int converted) {
+	SelectRowMove.converted = converted;
+    }
+    
+    
+    
+    public int getStuff() throws SelectException{
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
-	valid = validateCommand(selection);
+	try{
+	    valid = validateCommand(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+	
 	    if(valid){
+		try{
 		converted = Integer.parseInt(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+		
 	    }
 	}
 	return converted;

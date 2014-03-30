@@ -8,7 +8,7 @@ package chkrs;
 
 /**
  *
- * @author bensmac
+ * @author michael
  */
 public class MenuGameHelpControl {
     public void instructions(){

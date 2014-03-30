@@ -1,37 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-package chkrs;
+package cit260.checkers.menus;
 
 import java.util.Scanner;
 
 /**
  *
- * @author Michael
+ * @author michael
  */
 public class MenuPlayingHelp extends Menu{
-    
-    private static final String instructions = "What can we help you with?";
-    private static int menuItems = 2;
+    private static String instructions = "What can we help you with?";
+    private static int menuItems = 4;
     private final static String[][] menus = {
-        {"1", "Game play instructions"}, 
-        {"2", "Menu Navigation"},
+        {"I", "Game play instructions"}, 
+        {"N", "Menu Navigation"},
+	{"G", "General"},
+	{"R", "Return to previous menu"},
 	};
     
-    MenuPlayingHelp(){
+    public MenuPlayingHelp(){
 	super(instructions,menuItems,menus);
-	
     }
-    
-   @Override
-   public void executeCommands(boolean valid){
+   
+    @Override
+     public void executeCommands(boolean valid){
 	if(valid){
 	    switch(selection){
-		case "1": System.out.println("NNNNNN");//menuPlaying.getInput();
+		case "I": System.out.println("NNNNN1");//this.menuPlayingHelpControl.instructions();
 		    break;
-		case "2": System.out.println("HHHHHH");//menuMainHelp.getInput();
+		case "N": System.out.println("NNNNN2");//this.menuPlayingHelpControl.navigation();
 		    break;
-                
+		case "G": System.out.println("NNNNN3");//this.menuPlayingHelpControl.general();
+		    break;
+		case "R": System.out.println("NNNNN4");//this.menuPlayingHelpControl.general();
+		    break;
 		}
 	}
     }
-}
 
+    @Override
+    public String DisplyInfo(boolean valid) {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInfo() {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}

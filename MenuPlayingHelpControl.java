@@ -8,7 +8,7 @@ package chkrs;
 
 /**
  *
- * @author Michael
+ * @author michael
  */
 public class MenuPlayingHelpControl {
     public void instructions(){

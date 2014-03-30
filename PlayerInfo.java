@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Michael
+ * @author michael
  */
 public class PlayerInfo {
     Scanner input = new Scanner(System.in);

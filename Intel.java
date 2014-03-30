@@ -4,62 +4,20 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package intel;
+
+import Exception.IntelException;
+import chkrs.Board;
 
 /**
  *
- * @author bensmac
+ * @author michael
  */
 public class Intel {
-     
-    
     int r = 0;
     int c = 0;
     int ir  = 0;
     int ic  = 0;
-    
-    
-  
-    public void run(){
-	for(int oo = 0; oo < 12; oo++){
-	    for(int jj = 0; jj < 18; jj++){
-		    allMoves[oo][jj] = 0; 
-	    }
-	}
-	this.movablePieces();
-	    for(int i = 0; i < 12; i++){
-		r = allMoves[i][0];
-		c = allMoves[i][1];
-		count = 0;
-		holdValues[0][0] = 0;
-		holdValues[0][1] = 0;
-		for(int ii = 0; ii < 16; ii++){
-		    holdValues[1][ii] = 0;
-		}
-		this.checkAPiece();
-		for(int j = 0; j < 16; j++){
-		    allMoves[i][j+2] = holdValues[1][j]; 
-		}
-	    }
-	    for(int l = 0;l < 12; l++){
-		System.out.print("{");
-		for(int m = 0;m < 18; m++){
-		System.out.print(allMoves[l][m]+",");
-		} 
-		System.out.println("}");
-	    }
-	    for(int k = 0; k < 12; k++){
-		if(allMoves[k][2] != 0){
-		    r= allMoves[k][0];
-		    c= allMoves[k][1];
-		    check = allMoves[k][2];
-		    this.movePiece();
-		    break;
-		}
-	    }
-	}
-    
- 
     int[][] holdValues = {
 	{0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -79,7 +37,75 @@ public class Intel {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     };
+    public void run() throws IntelException{
+	// sets all the values of allMoves to zero
+	for(int oo = 0; oo < 12; oo++){
+	    for(int jj = 0; jj < 18; jj++){
+		    allMoves[oo][jj] = 0; 
+	    }
+	}
+	// runs the method movable pieces which checks the board for movable pieces
+	try{
+	this.movablePieces();
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	// filling allMoves and puts them in the 0 and 1 position of allMoves
+	    
+	try{
+	for(int i = 0; i < 12; i++){
+		r = allMoves[i][0];
+		c = allMoves[i][1];
+		count = 0;
+		//clearing hold values
+		holdValues[0][0] = 0;
+		holdValues[0][1] = 0;
+		for(int ii = 0; ii < 16; ii++){
+		    holdValues[1][ii] = 0;
+		}
+		this.checkAPiece();
+		for(int j = 0; j < 16; j++){
+		    allMoves[i][j+2] = holdValues[1][j]; 
+		}
+	    }
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
+	try{
+	    for(int l = 0;l < 12; l++){
+		System.out.print("{");
+		for(int m = 0;m < 18; m++){
+		System.out.print(allMoves[l][m]+",");
+		} 
+		System.out.println("}");
+	    }
+	    }
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	try{  
+	    for(int k = 0; k < 12; k++){
+		if(allMoves[k][2] != 0){
+		    r= allMoves[k][0];
+		    c= allMoves[k][1];
+		    check = allMoves[k][2];
+		    this.movePiece();
+		    break;
+		}
+	    }
+	  }
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}  
+	    
+	}
     
+ 
+    
+    // populates the allMoves with movable values
     public void movablePieces(){
 	int count1 = 0;
 	for(int i = 0; i < 8; i++){
