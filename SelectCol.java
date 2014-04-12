@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class SelectCol implements Serializable{
     private static Scanner input = new Scanner(System.in);

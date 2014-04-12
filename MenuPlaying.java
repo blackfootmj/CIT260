@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class MenuPlaying extends Menu{
 

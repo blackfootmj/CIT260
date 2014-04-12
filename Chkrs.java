@@ -9,7 +9,7 @@ import static java.lang.System.in;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class Chkrs {
     public static void main(String[] args) throws MenuException, IOException {

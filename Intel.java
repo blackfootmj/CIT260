@@ -11,7 +11,7 @@ import chkrs.Board;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class Intel {
     int r = 0;

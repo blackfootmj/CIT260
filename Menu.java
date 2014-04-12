@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public abstract class Menu implements DisplayInfo, EnterInfo{
     Scanner input = new Scanner(System.in);

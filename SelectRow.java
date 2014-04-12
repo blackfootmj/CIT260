@@ -11,7 +11,7 @@ import chkrs.Error;
 import java.util.Scanner;
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class SelectRow {
     private static Scanner input = new Scanner(System.in);

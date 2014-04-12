@@ -8,7 +8,7 @@ package Exception;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class MenuException extends Exception {
     public MenuException(){

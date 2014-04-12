@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class MenuPlayingHelp extends Menu{
     private static String instructions = "What can we help you with?";

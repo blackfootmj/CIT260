@@ -8,7 +8,7 @@ package cit260.checkers.menus;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public interface DisplayInfo {
 

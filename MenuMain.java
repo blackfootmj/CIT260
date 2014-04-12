@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public class MenuMain extends Menu{
     private static final String menus[][] = {

@@ -8,7 +8,7 @@ package chkrs;
 
 /**
  *
- * @author michael
+ * @author Michael
  */
 public interface Brd {
     
