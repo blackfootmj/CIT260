@@ -1,4 +1,4 @@
-michael
+Blackfootmj
 ============
 
-This repo contains all the class individual assignments 
+This repo contains all the class assignments
